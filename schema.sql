@@ -2,11 +2,12 @@ create database userappdb;
 
 use userappdb;
 
-create table users
-(
-	id integer auto_increment primary key,
-	uname varchar(100) not null,
-	email varchar(50) not null unique,
-	country varchar(50) not null,
-	passwd varchar(50) not null
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    address TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

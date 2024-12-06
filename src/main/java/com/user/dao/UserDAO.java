@@ -1,6 +1,10 @@
 package com.user.dao;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +18,13 @@ public class UserDAO {
     }
 
     public void addUser(User user) throws SQLException {
-        String query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        String query = "INSERT INTO users (username, name, email, password, address) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getAddress());
             statement.executeUpdate();
         }
     }
@@ -32,13 +38,38 @@ public class UserDAO {
                     return new User(
                         resultSet.getInt("id"),
                         resultSet.getString("username"),
+                        resultSet.getString("name"),
                         resultSet.getString("email"),
-                        resultSet.getString("password")
+                        resultSet.getString("password"),
+                        resultSet.getString("address"),
+                        resultSet.getTimestamp("created_at")
                     );
                 }
             }
         }
         return null; // User not found
+    }
+
+    public User getUserByEmail(String email, String password) throws SQLException {
+        String query = "SELECT * FROM users WHERE email=? AND password=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+            statement.setString(2, password);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("password"),
+                        rs.getString("address"),
+                        rs.getTimestamp("created_at")
+                    );
+                }
+            }
+        }
+        return null;
     }
 
     public List<User> getAllUsers() throws SQLException {
@@ -50,8 +81,11 @@ public class UserDAO {
                 User user = new User(
                     resultSet.getInt("id"),
                     resultSet.getString("username"),
+                    resultSet.getString("name"),
                     resultSet.getString("email"),
-                    resultSet.getString("password")
+                    resultSet.getString("password"),
+                    resultSet.getString("address"),
+                    resultSet.getTimestamp("created_at")
                 );
                 users.add(user);
             }
@@ -60,12 +94,14 @@ public class UserDAO {
     }
 
     public void updateUser(User user) throws SQLException {
-        String query = "UPDATE users SET username=?, email=?, password=? WHERE id=?";
+        String query = "UPDATE users SET username=?, name=?, email=?, password=?, address=? WHERE id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPassword());
-            statement.setInt(4, user.getId());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getAddress());
+            statement.setInt(6, user.getId());
             statement.executeUpdate();
         }
     }
