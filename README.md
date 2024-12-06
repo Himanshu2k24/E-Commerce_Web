@@ -32,30 +32,28 @@ This repository hosts the code for a Java e-commerce Website. This application a
 ## Database Setup
 
 # 1. Create a new MySQL database:
-`- See schema.sql`
+```- See schema.sql```
 # 2.Create the required tables:
-`- See schema.sql`
+```- See schema.sql```
 ## Installation & Setup
 # 1.Clone the repository:
-`git clone https://github.com/Himanshu2k24/E-Commerce_Web.git`
+ git clone https://github.com/Himanshu2k24/E-Commerce_Web.git
 # 2.Configure database connection:
-`  -  Open src/main/java/com/user/dao/UserDao.java`
-`  -  Update the database URL, username, and password in other DAO classes
-`
+     -  Open src/main/java/com/user/dao/UserDao.java 
+     -  Update the database URL, username, and password in other DAO classes
 # 3. Build the project:
-`mvn clean install`
+mvn clean install
 # 4.Deploy to Tomcat:
-Copy the WAR file from target/movie-ticket-booking-system.war to Tomcat's webapps directory
-Start Tomcat server
-# 5.Access the application:
-`http://localhost:8080/user-web-app
-`
+'''Copy the WAR file target\user-web-app to Tomcat's webapps directory
+Start Tomcat server''
+# 5. Access the application:
+``` http://localhost:8080/user-web-app ```
 
 ## Project Structure
 
    E- Commerce Website
 
-`   ├── src/
+```   ├── src/
    │   ├── main/
    │   │   ├── java/
    │   │   │   ├── com/
@@ -83,4 +81,4 @@ Start Tomcat server
    │   ├── test/
    │   │ └── java/
    ├── pom.xml
-   └── README.md`
+   └── README.md```
