@@ -44,8 +44,9 @@ This repository hosts the code for a Java e-commerce Website. This application a
 # 3. Build the project:
 mvn clean install
 # 4.Deploy to Tomcat:
-'''Copy the WAR file target\user-web-app to Tomcat's webapps directory
-Start Tomcat server''
+-  Copy the WAR file target\user-web-app.war to Tomcat's webapps directory
+-  Start Tomcat server
+
 # 5. Access the application:
 ``` http://localhost:8080/user-web-app ```
 
