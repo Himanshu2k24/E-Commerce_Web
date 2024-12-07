@@ -62,7 +62,7 @@ This repository hosts the code for a Java e-commerce Website. This application a
    │   │   │   │   ├── Order/
    │   │   │   │   |  |___ model/
    │   │   │   │   |  |___ dao/
-   │   │   │   │   |___ User/
+   │   │   │   │   |___ Product/
    │   │   │   │   |  |__ model/
    │   │   │   │   |  |__ dao/
    │   │   │   │   ├── User/
