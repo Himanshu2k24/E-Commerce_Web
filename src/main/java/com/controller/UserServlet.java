@@ -72,4 +72,31 @@ public class UserServlet extends HttpServlet {
             throw new ServletException(e);
         }
     }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        
+        try {
+            if ("viewProfile".equals(action)) {
+                HttpSession session = request.getSession();
+                User user = (User) session.getAttribute("user");
+                if (user != null) {
+                    request.setAttribute("user", user);
+                    request.getRequestDispatcher("profile.jsp").forward(request, response);
+                } else {
+                    response.sendRedirect("login.jsp");
+                }
+            } else if ("listUsers".equals(action)) {
+                UserDAO userDAO = new UserDAO(DBConnection.getConnection());
+                request.setAttribute("users", userDAO.getAllUsers());
+                request.getRequestDispatcher("users.jsp").forward(request, response);
+            } else {
+                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Invalid action");
+            }
+        } catch (Exception e) {
+            throw new ServletException(e);
+        }
+    }
 }

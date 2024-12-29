@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,71 +9,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">E-Commerce</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ml-auto">
-                <c:choose>
-                    <c:when test="${not empty sessionScope.user}">
-                        <li class="nav-item">
-                            <a class="nav-link" href="profile.jsp">Profile</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="nav-item">
-                            <a class="nav-link" href="login.jsp">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="register.jsp">Register</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
+<a class="navbar-brand" href="index.jsp">E-Commerce</a>
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Login</h2>
+            <form action="UserServlet" method="post" id="loginForm">
+                <input type="hidden" name="action" value="login">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                    <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.jsp">Sign up</a></p>
+            </div>
         </div>
-    </nav>
-    
-    <div class="container">
-        <h2 class="mt-5">Login</h2>
-        <form action="UserServlet" method="post" id="loginForm">
-            <input type="hidden" name="action" value="login">
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-                <div class="invalid-feedback">Please enter a valid email.</div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-                <div class="invalid-feedback">Please enter your password.</div>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
     </div>
+
     <script src="scripts.js"></script>
-    <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var email = document.getElementById('email');
-            var password = document.getElementById('password');
-            if (!email.checkValidity()) {
-                email.classList.add('is-invalid');
-            } else {
-                email.classList.remove('is-invalid');
-            }
-            if (!password.checkValidity()) {
-                password.classList.add('is-invalid');
-            } else {
-                password.classList.remove('is-invalid');
-            }
-            if (email.checkValidity() && password.checkValidity()) {
-                // Submit the form
-                this.submit();
-            }
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

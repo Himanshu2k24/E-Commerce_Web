@@ -1,0 +1,8 @@
+com\order\dao\OrderDAO.class
+com\product\model\Product.class
+com\user\dao\UserDAO.class
+com\product\dao\ProductDAO.class
+com\order\model\Order.class
+com\user\util\DBConnection.class
+com\user\model\User.class
+com\controller\UserServlet.class
