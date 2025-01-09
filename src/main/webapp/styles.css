@@ -112,14 +112,15 @@ h2 {
 }
 
 .card {
-    width: 165px;
-    height: auto;
+    width: 100%; /* Changed from fixed width */
+    height: 100%;
     background-color: white;
     border: 1px solid #e1e1e1;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 20px;
 }
 
 .card:hover {
@@ -128,8 +129,8 @@ h2 {
 }
 
 .card img {
-    width: 165px;
-    height: 165px;
+    width: 100%; /* Changed from fixed width */
+    height: 200px; /* Fixed height for consistency */
     object-fit: cover;
 }
 
@@ -208,6 +209,11 @@ h2 {
     .card {
         width: 90%;
     }
+
+    .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -223,5 +229,12 @@ h2 {
     .btn {
         font-size: 14px;
         padding: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
