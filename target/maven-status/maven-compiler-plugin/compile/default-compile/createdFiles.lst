@@ -1,6 +1,8 @@
 com\order\dao\OrderDAO.class
 com\product\model\Product.class
 com\user\dao\UserDAO.class
+com\controller\CartServlet.class
+com\controller\PaymentServlet.class
 com\product\dao\ProductDAO.class
 com\order\model\Order.class
 com\user\util\DBConnection.class
