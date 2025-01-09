@@ -5,7 +5,10 @@ This repository hosts the code for a Java e-commerce Website. This application a
 - Register new account
 - Login/Logout
 - User Profile
-## Technology Stack
+- Add To Card
+- Payment Page
+- Disscount Offer
+## 🛠️ Technology Stack
 ### Frontend
 - JSP (JavaServer Pages)
 - HTML5
@@ -23,13 +26,13 @@ This repository hosts the code for a Java e-commerce Website. This application a
 - jQuery
 - Font Awesome
 - MySQL Connector/J
-### Prerequisites
+### ⚙️ Prerequisites
 - JDK 11 or higher
 - Apache Tomcat 9.0 or higher
 - MySQL 8.0
 - Maven 3.x
 - IDE (Eclipse/IntelliJ IDEA)
-## Database Setup
+## 🚀 Database Setup
 
 # 1. Create a new MySQL database:
     - See schema.sql
@@ -50,7 +53,7 @@ This repository hosts the code for a Java e-commerce Website. This application a
 # 5. Access the application:
     http://localhost:8080/user-web-app 
 
-## Project Structure
+## 📁 Project Structure
 
    E- Commerce Website
 
