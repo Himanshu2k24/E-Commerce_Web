@@ -1,10 +1,11 @@
 # E-Commerce Website
-## This Project is under development.
 This repository hosts the code for a Java e-commerce Website. This application allows users to browse products, manage their carts, and securely place orders online. The project follows a structured MVC architecture, ensuring scalability and maintainability. Built using Java Servlets, JSP, and MySQL, it provides a seamless shopping experience.
 ## Features
 - Register new account
 - Login/Logout
 - User Profile
+- Add to Cart
+- Payment Through Credit Card
 ## Technology Stack
 ### Frontend
 - JSP (JavaServer Pages)
