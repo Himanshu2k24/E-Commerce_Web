@@ -10,11 +10,18 @@ public class DBConnection {
     private static final String PASSWORD = "Kapilsunil#12";
 
     public static Connection getConnection() throws SQLException {
+        Connection conn = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            conn = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Database connection successful!");
+            return conn;
         } catch (ClassNotFoundException e) {
             throw new SQLException("Database driver not found", e);
+        } catch (SQLException e) {
+            System.out.println("Database Connection Error: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
         }
     }
 }

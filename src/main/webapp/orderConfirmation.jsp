@@ -55,7 +55,7 @@
             </div>
 
             <div class="mt-4">
-                <a href="index.jsp" class="btn btn-primary">Continue Shopping</a>
+                <a href="products" class="btn btn-primary">Continue Shopping</a>
             </div>
         </div>
     </div>

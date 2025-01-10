@@ -43,7 +43,8 @@ public class UserServlet extends HttpServlet {
                 if (user != null) {
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-                    response.sendRedirect("index.jsp");
+                    response.sendRedirect(request.getContextPath() + "/products");
+                    return;
                 } else {
                     response.sendRedirect("login.jsp?error=true");
                 }

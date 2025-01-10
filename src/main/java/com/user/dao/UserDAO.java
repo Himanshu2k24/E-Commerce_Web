@@ -17,7 +17,7 @@ public class UserDAO {
         this.connection = connection;
     }
 
-    public void addUser(User user) throws SQLException {
+    public boolean addUser(User user) throws SQLException {
         String query = "INSERT INTO users (username, name, email, password, address) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());
@@ -25,7 +25,7 @@ public class UserDAO {
             statement.setString(3, user.getEmail());
             statement.setString(4, user.getPassword());
             statement.setString(5, user.getAddress());
-            statement.executeUpdate();
+            return statement.executeUpdate() > 0;
         }
     }
 
@@ -55,16 +55,16 @@ public class UserDAO {
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, email);
             statement.setString(2, password);
-            try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
                     return new User(
-                        rs.getInt("id"),
-                        rs.getString("username"),
-                        rs.getString("name"),
-                        rs.getString("email"),
-                        rs.getString("password"),
-                        rs.getString("address"),
-                        rs.getTimestamp("created_at")
+                        resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getString("address"),
+                        resultSet.getTimestamp("created_at")
                     );
                 }
             }
@@ -93,7 +93,7 @@ public class UserDAO {
         return users;
     }
 
-    public void updateUser(User user) throws SQLException {
+    public boolean updateUser(User user) throws SQLException {
         String query = "UPDATE users SET username=?, name=?, email=?, password=?, address=? WHERE id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getUsername());
@@ -102,15 +102,15 @@ public class UserDAO {
             statement.setString(4, user.getPassword());
             statement.setString(5, user.getAddress());
             statement.setInt(6, user.getId());
-            statement.executeUpdate();
+            return statement.executeUpdate() > 0;
         }
     }
 
-    public void deleteUser(int id) throws SQLException {
+    public boolean deleteUser(int id) throws SQLException {
         String query = "DELETE FROM users WHERE id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
-            statement.executeUpdate();
+            return statement.executeUpdate() > 0;
         }
     }
 }

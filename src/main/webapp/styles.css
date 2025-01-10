@@ -194,6 +194,34 @@ h2 {
     margin-right: 3px;
 }
 
+.price-section {
+    margin: 15px 0;
+}
+
+.current-price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c2c2c;
+}
+
+.original-price {
+    margin-left: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.discount {
+    margin-left: 8px;
+    color: #388e3c;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .login-box {
